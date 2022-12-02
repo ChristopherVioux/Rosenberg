@@ -147,12 +147,15 @@ quiz.addQuestion(question10);
 let NbrQuestion = document.querySelectorAll(".nbrQuestion");
 
 NbrQuestion.forEach(function(NbrQuestion) {
+    
     NbrQuestion.textContent = quiz.questions.length;
+
 });
 
 
 // Fonction servant à lancer le questionnaire en enlevant la page d'introduction du quiz et en mettant la première question
 function startQuestions() {
+
     header_screen.style.display = "none";
     questions_screen.style.display = "block";
 
@@ -163,3 +166,15 @@ function startQuestions() {
 // Récupérer le bouton dans mon html avec le ElementById car le ElementsByClassName n'a pas le addEventListener)
 let btn_start = document.getElementById("btn_start");
 btn_start.addEventListener("click", startQuestions);
+
+
+// tts function
+
+// let button = document.getElementById("button-tts");
+// let question = document.getElementsByClassName("title_questions");
+// button.addEventListener("click", function() {
+//     let text = question.textContent;
+//     let speech = new SpeechSynthesisUtterance(text);
+//     speechSynthesis.speak(speech);
+//     console.log("hello");
+// });
