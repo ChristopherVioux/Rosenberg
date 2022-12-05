@@ -33,10 +33,9 @@ function Quiz(){
 
 
 // Fonction Question permettant de créer les questions avec le titre, les réponses et la réponse correcte
-function Question(title, answers, answerCorrect) {
+function Question(title, answers) {
     this.title = title,
     this.answers = answers,
-    this.answerCorrect = answerCorrect,
 
     // Mise en place et structuration du HTML et CSS pour mes questions
     this.getElement = function(indexQuestion, nbrOfQuestions) {
@@ -80,12 +79,7 @@ function Question(title, answers, answerCorrect) {
         let answerSelect = e.target;
         if(this.isCorrectAnswer(answerSelect.id)) {
             answerSelect.classList.add("answersCorrect");
-            quiz.nbrCorrects++;
-        }
-        else {
-            answerSelect.classList.add("answersWrong");
-            let RightAnswer = document.getElementById(this.answerCorrect);
-            RightAnswer.classList.add("answersCorrect");
+
         }
 
         // Mise en place d'une fonction Timeout pour passer à la prochaine question, timer d'une seconde après le click sur un élément
@@ -94,11 +88,19 @@ function Question(title, answers, answerCorrect) {
             quiz.indexCurrentQuestion++;
             quiz.displayCurrentQuestion();
         }, 1100);
-    }
-
-    // Si la réponse choisit par le user est égale à la réponse correcte retourner True sinon False
+    };
     this.isCorrectAnswer = function(answerUser) {
-        if(answerUser == this.answerCorrect) {
+        if(answerUser == (this.answers=1)) {
+            quiz.nbrCorrects++;
+            return true;
+        } else if (answerUser == (this.answers=2)) {
+            quiz.nbrCorrects+=2;
+            return true;
+        } else if (answerUser == (this.answers=3)) {
+            quiz.nbrCorrects+=3;
+            return true;
+        } else if (answerUser == (this.answers=4)) {
+            quiz.nbrCorrects+=4;
             return true;
         }
         else {
@@ -107,39 +109,38 @@ function Question(title, answers, answerCorrect) {
     }
 };
 
-
 // On va récupérer notre fonction Quiz pour implémenter ses données dans ses arguments 
 // Partie Création des mes données de Questions :
 let quiz = new Quiz();
 
-let question1 = new Question("Je pense que je suis une personne de valeur, au moins égale à n'importe qui d'autre", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 2);
+let question1 = new Question("Je pense que je suis une personne de valeur, au moins égale à n'importe qui d'autre", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"],1,2,3,4);
 quiz.addQuestion(question1);
 
-let question2 = new Question("Je pense que je possède un certain nombre de belles qaulités", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 1);
+let question2 = new Question("Je pense que je possède un certain nombre de belles qaulités", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"],1,2,3,4);
 quiz.addQuestion(question2);
 
-let question3 = new Question("Tout bien considéré, je suis porté à me considérer comme un raté", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 3);
+let question3 = new Question("Tout bien considéré, je suis porté à me considérer comme un raté", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question3);
 
-let question4 = new Question("Je suis capable de faire les choses aussi bien que la majorité des gens", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 1);
+let question4 = new Question("Je suis capable de faire les choses aussi bien que la majorité des gens", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question4);
 
-let question5 = new Question("Je sens peu de raisons d'être fier de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 2);
+let question5 = new Question("Je sens peu de raisons d'être fier de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question5);
 
-let question6 = new Question("J'ai une attitude positive viv-à-vis de moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 3);
+let question6 = new Question("J'ai une attitude positive viv-à-vis de moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question6);
 
-let question7 = new Question("Dans l'ensemble, je suis satisfait de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 2);
+let question7 = new Question("Dans l'ensemble, je suis satisfait de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question7);
 
-let question8 = new Question("J'aimerais avoir plus de respect pour moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 2);
+let question8 = new Question("J'aimerais avoir plus de respect pour moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question8);
 
-let question9 = new Question("Parfois je me sens vraiment inutile", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 1);
+let question9 = new Question("Parfois je me sens vraiment inutile", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question9);
 
-let question10 = new Question("Il m'arrive de penser que je suis un bon à rien", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"], 3);
+let question10 = new Question("Il m'arrive de penser que je suis un bon à rien", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question10);
 
 
