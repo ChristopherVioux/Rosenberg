@@ -6,6 +6,11 @@ let result_screen = document.getElementById("result_screen");
 // Etablir la fonction Quiz permettant d'ajouter des questions et de voir combien de bonnes réponse le user a
 function Quiz(){
     this.questions = [];
+    this.comment1 = "Votre estime de soi est très faible. Un travail dans ce domaine semble souhaitable.";
+    this.comment2 = "Votre estime de soi est faible. Un travail dans ce domaine serait bénéfique.";
+    this.comment3 = "Votre estime de soi est dans la moyenne.";
+    this.comment4 = "Votre estime de soi est forte.";
+    this.comment5 = "Votre estime de soi est très forte et vous avez tendance à être fortement affirmé(e).";
     this.nbrCorrects = 0;
     this.indexCurrentQuestion = 0;
 
@@ -26,9 +31,35 @@ function Quiz(){
 
             let NbrCorrectUser = document.querySelector("#nbrCorrects");
             NbrCorrectUser.textContent = quiz.nbrCorrects;
+
             result_screen.style.display = "block";
         }
     }
+
+    // this.addComment = function(comment) {
+    //     this.comments.push(comment);
+    // }
+
+    this.addResult = function() {
+        if(this.indexCurrentQuestion === this.questions.length) {
+            if(quiz.nbrCorrects < 25) {
+                let comment = document.querySelector("#resultat");
+                comment.textContent = this.comment1;
+            } else if (quiz.nbrCorrects >= 25 && quiz.nbrCorrects < 31){
+                let comment = document.querySelector("#resultat");
+                comment.textContent = this.comment2;
+            } else if (quiz.nbrCorrects >= 31 && quiz.nbrCorrects < 34){
+                let comment = document.querySelector("#resultat");
+                comment.textContent = this.comment3;
+            } else if (quiz.nbrCorrects >= 34 && quiz.nbrCorrects <= 39){
+                let comment = document.querySelector("#resultat");
+                comment.textContent = this.comment4;
+            } else if (quiz.nbrCorrects > 39){
+                let comment = document.querySelector("#resultat");
+                comment.textContent = this.comment5;
+            }
+        }
+    } 
 }
 
 
@@ -87,6 +118,7 @@ function Question(title, answers) {
             questions_screen.textContent = '';
             quiz.indexCurrentQuestion++;
             quiz.displayCurrentQuestion();
+            quiz.addResult();
         }, 1100);
     };
     this.isCorrectAnswer = function(answerUser) {
@@ -167,15 +199,3 @@ function startQuestions() {
 // Récupérer le bouton dans mon html avec le ElementById car le ElementsByClassName n'a pas le addEventListener)
 let btn_start = document.getElementById("btn_start");
 btn_start.addEventListener("click", startQuestions);
-
-
-// tts function
-
-// let button = document.getElementById("button-tts");
-// let question = document.getElementsByClassName("title_questions");
-// button.addEventListener("click", function() {
-//     let text = question.textContent;
-//     let speech = new SpeechSynthesisUtterance(text);
-//     speechSynthesis.speak(speech);
-//     console.log("hello");
-// });
