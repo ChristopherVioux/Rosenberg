@@ -85,6 +85,25 @@ function Question(title, answers) {
         questionTitle.classList.add("title_questions");
         questionTitle.textContent = this.title;
 
+        let button = document.createElement("button");
+        button.classList.add("js-btn-tts");
+        button.textContent = "Lire";
+
+        let buttonStop = document.createElement("button");
+        buttonStop.classList.add("js-btn-stop-tts");
+        buttonStop.textContent = "Lire";
+
+        button.addEventListener("click", function(){
+            let text = questionTitle.textContent;
+        
+            let speech = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(speech);
+        });
+        
+        buttonStop.addEventListener("click", function(){
+            speechSynthesis.cancel();
+        });
+
         // Le append sert à afficher le html (il existe le after et le prepend si on veut afficher au-dessus ou en-dessous)
         questions_screen.prepend(button);
         questions_screen.append(questionTitle);
@@ -131,7 +150,7 @@ function Question(title, answers) {
             quiz.indexCurrentQuestion++;
             quiz.displayCurrentQuestion();
             quiz.addResult();
-        }, 1100);
+        }, 550);
     };
     this.isCorrectAnswer = function(answerUser) {
         if(answerUser == (this.answers=1)) {
