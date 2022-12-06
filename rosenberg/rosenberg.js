@@ -5,17 +5,30 @@ let result_screen = document.getElementById("result_screen");
 let button = document.getElementById("js-btn-tts");
 let buttonStop = document.getElementById("js-btn-stop-tts");
 let content = document.getElementById("span");
+let buttonResult = document.getElementById("js-btn-result-tts");
+let buttonStopResult = document.getElementById("js-btn-stop-result-tts");
 
-// button.addEventListener("click", function(){
-//     let text = header_screen.textContent;
+button.addEventListener("click", function(){
+    let text = header_screen.textContent;
 
-//     let speech = new SpeechSynthesisUtterance(text);
-//     speechSynthesis.speak(speech);
-// });
+    let speech = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(speech);
+});
 
-// buttonStop.addEventListener("click", function(){
-//     speechSynthesis.cancel();
-// });
+buttonStop.addEventListener("click", function(){
+    speechSynthesis.cancel();
+});
+
+buttonResult.addEventListener("click", function(){
+    let text = result_screen.textContent;
+
+    let speech = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(speech);
+});
+
+buttonStopResult.addEventListener("click", function(){
+    speechSynthesis.cancel();
+});
 
 // Etablir la fonction Quiz permettant d'ajouter des questions et de voir combien de bonnes réponse le user a
 function Quiz(){
@@ -71,27 +84,6 @@ function Quiz(){
             }
         }
     }
-
-    let result_screen = document.getElementById("result_screen");
-
-    let button = document.createElement("button");
-    button.classList.add("js-btn-tts");
-    button.textContent = "Lire";
-
-    let buttonStop = document.createElement("button");
-    buttonStop.classList.add("js-btn-stop-tts");
-    buttonStop.textContent = "Stop";
-
-    button.addEventListener("click", function(){
-        let text = result_screen.textContent;
-    
-        let speech = new SpeechSynthesisUtterance(text);
-        speechSynthesis.speak(speech);
-    });
-    
-    buttonStop.addEventListener("click", function(){
-        speechSynthesis.cancel();
-    });
 }
 
 
