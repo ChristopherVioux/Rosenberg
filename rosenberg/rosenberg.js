@@ -91,7 +91,7 @@ function Question(title, answers) {
 
         let buttonStop = document.createElement("button");
         buttonStop.classList.add("js-btn-stop-tts");
-        buttonStop.textContent = "Lire";
+        buttonStop.textContent = "Stop";
 
         button.addEventListener("click", function(){
             let text = questionTitle.textContent;
@@ -105,6 +105,7 @@ function Question(title, answers) {
         });
 
         // Le append sert à afficher le html (il existe le after et le prepend si on veut afficher au-dessus ou en-dessous)
+        questions_screen.prepend(buttonStop);
         questions_screen.prepend(button);
         questions_screen.append(questionTitle);
 
