@@ -17,6 +17,17 @@ buttonStop.addEventListener("click", function(){
     speechSynthesis.cancel();
 });
 
+button.addEventListener("click", function(){
+    let text = result_screen.textContent;
+
+    let speech = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(speech);
+});
+
+buttonStop.addEventListener("click", function(){
+    speechSynthesis.cancel();
+});
+
 
 // Etablir la fonction Quiz permettant d'ajouter des questions et de voir combien de bonnes réponse le user a
 function Quiz(){
