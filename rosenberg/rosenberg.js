@@ -3,13 +3,18 @@ let header_screen = document.getElementById("header_screen");
 let questions_screen = document.getElementById("questions_screen");
 let result_screen = document.getElementById("result_screen");
 let button = document.getElementById("js-btn-tts");
-let content = document.querySelector("main_content");
+let buttonStop = document.getElementById("js-btn-stop-tts");
+let content = document.getElementById("span");
 
 button.addEventListener("click", function(){
     let text = content.textContent;
 
     let speech = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(speech);
+});
+
+buttonStop.addEventListener("click", function(){
+    speechSynthesis.cancel();
 });
 
 
