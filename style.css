@@ -8,7 +8,11 @@ body {
 .img_div {
     text-align: center;
 }
-
+.start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .img_quiz {
     width: auto;
     height: 130px;
