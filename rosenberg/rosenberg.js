@@ -23,6 +23,7 @@ buttonResult.addEventListener("click", function(){
     let text = result_screen.textContent;
 
     let speech = new SpeechSynthesisUtterance(text);
+    speech.rate = 0.8;
     speechSynthesis.speak(speech);
 });
 
