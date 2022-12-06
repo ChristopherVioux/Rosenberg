@@ -54,6 +54,18 @@ body {
     display: block;
 }
 
+.js-btn-tts {
+    width: 100px;
+    height: 50px;
+    font-size: 2rem;
+}
+
+.js-btn-stop-tts {
+    width: 100px;
+    height: 50px;
+    font-size: 2rem;
+}
+
 .questions_screen {
     display: none;
 }
