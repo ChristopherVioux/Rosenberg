@@ -47,17 +47,7 @@ function Quiz(){
             NbrCorrectUser.textContent = quiz.nbrCorrects;
 
             result_screen.style.display = "block";
-            
-            button.addEventListener("click", function(){
-                let text = result_screen.textContent;
-            
-                let speech = new SpeechSynthesisUtterance(text);
-                speechSynthesis.speak(speech);
-            });
-            
-            buttonStop.addEventListener("click", function(){
-                speechSynthesis.cancel();
-            });
+
         }
     }
 
@@ -80,7 +70,18 @@ function Quiz(){
                 comment.textContent = this.comment5;
             }
         }
-    } 
+    }
+
+    button.addEventListener("click", function(){
+        let text = result_screen.textContent;
+    
+        let speech = new SpeechSynthesisUtterance(text);
+        speechSynthesis.speak(speech);
+    });
+    
+    buttonStop.addEventListener("click", function(){
+        speechSynthesis.cancel();
+    });
 }
 
 
