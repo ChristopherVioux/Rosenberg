@@ -57,12 +57,14 @@ body {
     width: 100px;
     height: 50px;
     font-size: 2rem;
+    margin: 10px;
 }
 
 .js-btn-stop-tts {
     width: 100px;
     height: 50px;
     font-size: 2rem;
+    margin: 10px;
 }
 
 .questions_screen {
