@@ -7,7 +7,7 @@ let buttonStop = document.getElementById("js-btn-stop-tts");
 let content = document.getElementById("span");
 
 button.addEventListener("click", function(){
-    let text = content.textContent;
+    let text = header_screen.textContent;
 
     let speech = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(speech);
@@ -129,14 +129,12 @@ function Question(title, answers) {
 
         // Fonction pour voir à combien de question on est sur le total de questions présents
         let questionNumber = document.createElement("h4");
-        let span = document.createElement("span");
         questionNumber.classList.add("avancement_question");
         questionNumber.textContent = "Questions : " + indexQuestion + " sur " + nbrOfQuestions;
 
         questions_screen.append(questionNumber);
 
         questions_screen.append(questionAnswer);
-        questionNumber.append(span);
     }
 
     this.addAnswer = function(answer) {
