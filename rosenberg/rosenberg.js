@@ -2,6 +2,16 @@
 let header_screen = document.getElementById("header_screen");
 let questions_screen = document.getElementById("questions_screen");
 let result_screen = document.getElementById("result_screen");
+let button = document.getElementById("js-btn-tts");
+let content = document.getElementById("span");
+
+button.addEventListener("click", function(){
+    let text = content.textContent;
+
+    let speech = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(speech);
+});
+
 
 // Etablir la fonction Quiz permettant d'ajouter des questions et de voir combien de bonnes réponse le user a
 function Quiz(){
@@ -35,10 +45,6 @@ function Quiz(){
             result_screen.style.display = "block";
         }
     }
-
-    // this.addComment = function(comment) {
-    //     this.comments.push(comment);
-    // }
 
     this.addResult = function() {
         if(this.indexCurrentQuestion === this.questions.length) {
@@ -75,6 +81,7 @@ function Question(title, answers) {
         questionTitle.textContent = this.title;
 
         // Le append sert à afficher le html (il existe le after et le prepend si on veut afficher au-dessus ou en-dessous)
+        questions_screen.prepend(button);
         questions_screen.append(questionTitle);
 
         let questionAnswer = document.createElement("ul");
