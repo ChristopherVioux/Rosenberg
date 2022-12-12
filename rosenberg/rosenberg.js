@@ -104,7 +104,7 @@ function Question(title, answers) {
 
         let button = document.createElement("button");
         button.classList.add("js-btn-tts");
-        button.textContent = "Lire";
+        button.textContent = "Lecture";
 
         let buttonStop = document.createElement("button");
         buttonStop.classList.add("js-btn-stop-tts");
@@ -191,6 +191,108 @@ function Question(title, answers) {
     }
 };
 
+function Question2(title, answers) {
+    this.title = title,
+    this.answers = answers,
+
+    // Mise en place et structuration du HTML et CSS pour mes questions
+    this.getElement = function(indexQuestion, nbrOfQuestions) {
+        let questions_screen = document.getElementById("questions_screen");
+        let rate = document.querySelector("rate");
+
+        let questionTitle = document.createElement("h3");
+        questionTitle.classList.add("title_questions");
+        questionTitle.textContent = this.title;
+
+        let button = document.createElement("button");
+        button.classList.add("js-btn-tts");
+        button.textContent = "Lecture";
+
+        let buttonStop = document.createElement("button");
+        buttonStop.classList.add("js-btn-stop-tts");
+        buttonStop.textContent = "Stop";
+
+        button.addEventListener("click", function(){
+            let text = questions_screen.textContent;
+        
+            let speech = new SpeechSynthesisUtterance(text);
+            speech.rate = 0.7;
+            speechSynthesis.speak(speech);
+        });
+        
+        buttonStop.addEventListener("click", function(){
+            speechSynthesis.cancel();
+        });
+
+        // Le append sert à afficher le html (il existe le after et le prepend si on veut afficher au-dessus ou en-dessous)
+        questions_screen.prepend(buttonStop);
+        questions_screen.prepend(button);
+        questions_screen.append(questionTitle);
+
+        let questionAnswer = document.createElement("ul");
+        questionAnswer.classList.add("list_questions");
+
+        // Boucle en ForEach pour placer à chaque fois un <li> pour chaque réponse
+        this.answers.forEach((answer, index) => {
+            let answerElement =  document.createElement("li");
+            answerElement.classList.add("answers");
+            answerElement.textContent = answer;
+            answerElement.id = index + 1;
+            answerElement.addEventListener("click", this.checkAnswer)
+    
+            questionAnswer.append(answerElement);
+        });
+
+        // Fonction pour voir à combien de question on est sur le total de questions présents
+        let questionNumber = document.createElement("h4");
+        questionNumber.classList.add("avancement_question");
+        questionNumber.textContent = "Questions : " + indexQuestion + " sur " + nbrOfQuestions;
+
+        questions_screen.append(questionNumber);
+
+        questions_screen.append(questionAnswer);
+    }
+
+    this.addAnswer = function(answer) {
+        this.answers.push(answer);
+    },
+
+    // Ici on va checker la réponse correcte avec une écoute d'évènement :
+    this.checkAnswer = (e) => { 
+        let answerSelect = e.target;
+        if(this.isCorrectAnswer(answerSelect.id)) {
+            answerSelect.classList.add("answersCorrect");
+
+        }
+
+        // Mise en place d'une fonction Timeout pour passer à la prochaine question, timer d'une seconde après le click sur un élément
+        setTimeout(function() {
+            questions_screen.textContent = '';
+            quiz.indexCurrentQuestion++;
+            quiz.displayCurrentQuestion();
+            quiz.addResult();
+        }, 550);
+    };
+    this.isCorrectAnswer = function(answerUser) {
+        if(answerUser == (this.answers=1)) {
+            quiz.nbrCorrects+=4;
+            return true;
+        } else if (answerUser == (this.answers=2)) {
+            quiz.nbrCorrects+=3;
+            return true;
+        } else if (answerUser == (this.answers=3)) {
+            quiz.nbrCorrects+=2;
+            return true;
+        } else if (answerUser == (this.answers=4)) {
+            quiz.nbrCorrects++;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+};
+
 // On va récupérer notre fonction Quiz pour implémenter ses données dans ses arguments 
 // Partie Création des mes données de Questions :
 let quiz = new Quiz();
@@ -201,13 +303,13 @@ quiz.addQuestion(question1);
 let question2 = new Question("Je pense que je possède un certain nombre de belles qualités", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"],1,2,3,4);
 quiz.addQuestion(question2);
 
-let question3 = new Question("Tout bien considéré, je suis porté à me considérer comme un raté", ["Tout à fait en accord", "Plutôt en accord", "Plutôt en désaccord", "Tout à fait en désaccord"]);
+let question3 = new Question2("Tout bien considéré, je suis porté à me considérer comme un raté", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question3);
 
 let question4 = new Question("Je suis capable de faire les choses aussi bien que la majorité des gens", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question4);
 
-let question5 = new Question("Je sens peu de raisons d'être fier de moi", ["Tout à fait en accord", "Plutôt en accord", "Plutôt en désaccord", "Tout à fait en désaccord"]);
+let question5 = new Question2("Je sens peu de raisons d'être fier de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question5);
 
 let question6 = new Question("J'ai une attitude positive viv-à-vis de moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
@@ -216,13 +318,13 @@ quiz.addQuestion(question6);
 let question7 = new Question("Dans l'ensemble, je suis satisfait de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question7);
 
-let question8 = new Question("J'aimerais avoir plus de respect pour moi-même", ["Tout à fait en accord", "Plutôt en accord", "Plutôt en désaccord", "Tout à fait en désaccord"]);
+let question8 = new Question2("J'aimerais avoir plus de respect pour moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question8);
 
-let question9 = new Question("Parfois je me sens vraiment inutile", ["Tout à fait en accord", "Plutôt en accord", "Plutôt en désaccord", "Tout à fait en désaccord"]);
+let question9 = new Question2("Parfois je me sens vraiment inutile", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question9);
 
-let question10 = new Question("Il m'arrive de penser que je suis un bon à rien", ["Tout à fait en accord", "Plutôt en accord", "Plutôt en désaccord", "Tout à fait en désaccord"]);
+let question10 = new Question2("Il m'arrive de penser que je suis un bon à rien", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
 quiz.addQuestion(question10);
 
 
