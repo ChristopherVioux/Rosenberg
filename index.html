@@ -4,37 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Questionnaire Quizitium, viens tester tes connaissances ! Des questions pour tous"/>
-    <title> Accueil </title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="description" content="Questionnaire Quizitium, Thème de l'énergie"/>
+    <title> Echelle d'estime de soi de Rosenberg </title>
+    <link rel="stylesheet" href="rosenberg.css">
 </head>
 <body>
-    <main id="main">
-        <div class="start">
+
+    <div class="main_content">
+
+        <div id="header_screen" class="header_screen" class="rate">
+            <button id="js-btn-tts" class="js-btn-tts">Lecture</button>
+            <button id="js-btn-stop-tts" class="js-btn-stop-tts">Stop</button>
+            <h1 class="title"> Echelle d'estime de soi de Rosenberg </h1>
+            <span id="span">L'estime de soi est définie comme le jugement ou l'évaluation que l'on fait de soi-même, de sa valeur personnelle. De façon plus simple, l'estime de soi peut-être également assimilée à l'affirmation de soi. L'estime de soi est un facteur essentiel dans la performance sportive. (Voir article:"encore une erreur d'arbitrage ou comment maintenir une estime de soi positive...")
+            <p>En répondant à ce test, vous pourrez ainsi obtenir une évaluation de votre estime de soi.</p></span>
+            <p class="sous_title"> Il y a <span class="nbrQuestion"> ?? </span> propositions </p>
             <div>
-                <button id="js-btn-tts" class="js-btn-tts">Lecture</button>
-                <button id="js-btn-stop-tts" class="js-btn-stop-tts">Stop</button>
+                <form name="RegForm" action="#" onsubmit="return startQuestions()">
+                    <input type="text" name="Code" placeholder="Renseignez votre code d'accès">
+                </form>
+                <button id="btn_start" class="start"> Commencer </button>
             </div>
-            <div class="titre_menu">
-                <h1> Bienvenue </h1>
-            </div>
-            <div class="sous_titre">
-                <h3 style="text-decoration: underline;"> Choisissez votre test </h3>
-            </div>    
         </div>
 
-        <div class="content">
-            <div class="food">
-                <a class="theme_txt_food" href="./rosenberg/rosenberg.html"> Echelle d'estime de soi de Rosenberg </a>
-            </div>
-            <!-- <div class="informatique">
-                <a class="theme_txt_informatique" href="./quizz_informatique/quizz.html"> Test d'anxiété </a>
-            </div>
-            <div class="energy">
-                <a class="theme_txt_energy" href="./quizz_energie/quizz.html"> Roue de la vie </a>
-            </div> -->
+        <div id="questions_screen" class="questions_screen rate" >
         </div>
-    </main>
-    <script src="index.js"></script>
+
+        <div id="result_screen" class="result_screen rate">
+            <button id="js-btn-result-tts" class="js-btn-result-tts">Lecture</button>
+            <button id="js-btn-stop-result-tts" class="js-btn-stop-result-tts">Stop</button>
+            <h2 class=""> Résultat </h2>
+            <span class=""> Vous avez obtenu <span id="nbrCorrects"> ?? </span> points. </span>
+            <p class="result_scale">(Résultat compris entre 1 et 40 points)</p>
+            <p class="" id="resultat">??</p>
+        </div>
+        
+    </div>
+    <script src="rosenberg.js"></script>
 </body>
 </html>
