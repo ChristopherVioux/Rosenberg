@@ -1,5 +1,5 @@
 // Récupérer mes 3 blocks div HTML (le header, la div questions et la div result)
-let header_screen = document.getElementById("header_screen");
+
 let questions_screen = document.getElementById("questions_screen");
 let result_screen = document.getElementById("result_screen");
 let button = document.getElementById("js-btn-tts");
@@ -8,7 +8,9 @@ let content = document.getElementById("span");
 let buttonResult = document.getElementById("js-btn-result-tts");
 let buttonStopResult = document.getElementById("js-btn-stop-result-tts");
 
+
 button.addEventListener("click", function(){
+    let header_screen = document.getElementById("header_screen");
     let text = header_screen.textContent;
 
     let speech = new SpeechSynthesisUtterance(text);
@@ -299,32 +301,32 @@ let quiz = new Quiz();
 let question1 = new Question("Je pense que je suis une personne de valeur, au moins égale à n'importe qui d'autre", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"],1,2,3,4);
 quiz.addQuestion(question1);
 
-// let question2 = new Question("Je pense que je possède un certain nombre de belles qualités", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"],1,2,3,4);
-// quiz.addQuestion(question2);
+let question2 = new Question("Je pense que je possède un certain nombre de belles qualités", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"],1,2,3,4);
+quiz.addQuestion(question2);
 
-// let question3 = new Question2("Tout bien considéré, je suis porté à me considérer comme un raté", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question3);
+let question3 = new Question2("Tout bien considéré, je suis porté à me considérer comme un raté", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question3);
 
-// let question4 = new Question("Je suis capable de faire les choses aussi bien que la majorité des gens", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question4);
+let question4 = new Question("Je suis capable de faire les choses aussi bien que la majorité des gens", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question4);
 
-// let question5 = new Question2("Je sens peu de raisons d'être fier de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question5);
+let question5 = new Question2("Je sens peu de raisons d'être fier de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question5);
 
-// let question6 = new Question("J'ai une attitude positive viv-à-vis de moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question6);
+let question6 = new Question("J'ai une attitude positive viv-à-vis de moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question6);
 
-// let question7 = new Question("Dans l'ensemble, je suis satisfait de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question7);
+let question7 = new Question("Dans l'ensemble, je suis satisfait de moi", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question7);
 
-// let question8 = new Question2("J'aimerais avoir plus de respect pour moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question8);
+let question8 = new Question2("J'aimerais avoir plus de respect pour moi-même", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question8);
 
-// let question9 = new Question2("Parfois je me sens vraiment inutile", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question9);
+let question9 = new Question2("Parfois je me sens vraiment inutile", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question9);
 
-// let question10 = new Question2("Il m'arrive de penser que je suis un bon à rien", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
-// quiz.addQuestion(question10);
+let question10 = new Question2("Il m'arrive de penser que je suis un bon à rien", ["Tout à fait en désaccord", "Plutôt en désaccord", "Plutôt en accord", "Tout à fait en accord"]);
+quiz.addQuestion(question10);
 
 
 // Ici je suis obligé de passer par un querySelectroAll pour avoir accès à la fonction ForEach (car le getElement ne le possède pas)
@@ -339,8 +341,10 @@ NbrQuestion.forEach(function(NbrQuestion) {
 
 // Fonction servant à lancer le questionnaire en enlevant la page d'introduction du quiz et en mettant la première question
 function startQuestions() {
+    let header_screen = document.getElementById("header_screen");
+
     let input = document.forms["RegForm"]["Code"];
-    let ACCES_KEY = "1234"
+    const ACCES_KEY = "5647";
 
     if (input.value != ACCES_KEY) {
         window.alert("Merci de renseigner un code valide");
