@@ -5,6 +5,69 @@ body {
     background-color: rgb(160, 252, 177);
 }
 
+.navbar {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.navbar button {
+    width: 125px;
+    height: 50px;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+.admin {
+    display: none;
+}
+
+.admin form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 250px;
+    font-size: 2em;
+}
+
+.admin form span {
+    padding-top: 15px;
+}
+
+.admin form input {
+    padding: 15px;
+}
+
+#valid_admin {
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+.token_page {
+    display: none;
+}
+
+.token_page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 250px;
+    font-size: 2em;
+}
+
+.token_page form span {
+    padding-top: 15px;
+}
+
+.token_page form input {
+    padding: 15px;
+}
+
+#valid_token {
+    margin-top: 15px;
+    font-size: 1em;
+}
+
 .return_menu {
     text-decoration: none;
 }

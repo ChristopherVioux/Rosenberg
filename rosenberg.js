@@ -1,6 +1,8 @@
 // Récupérer mes 3 blocks div HTML (le header, la div questions et la div result)
 
 let questions_screen = document.getElementById("questions_screen");
+let admin_page = document.getElementById("admin");
+let token_page = document.getElementById("token_page");
 let result_screen = document.getElementById("result_screen");
 let button = document.getElementById("js-btn-tts");
 let buttonStop = document.getElementById("js-btn-stop-tts");
@@ -358,7 +360,39 @@ function startQuestions() {
     }
 }
 
+// function Login() {
+//     let btn_admin = document.getElementById("btn_admin");
+//     let header_screen = document.getElementById("header_screen");
+
+//     btn_admin.addEventListener('click', (e)=>{
+//         if(e){
+//             admin_page.style.display = "block";
+//             header_screen.style.display = "none";
+//             btn_admin.style.display = "none";
+//         }
+//     })
+// }
+
+// function changeToken (){
+//     let input = document.forms["AdminForm"]["Email"]["Password"];
+//     const mail = "christophervioux@gmail.com";
+//     const password = "coucou";
+
+//     if (input.mail != mail || input.password != password) {
+//         window.alert("Merci de renseigner un mail et/ou un mot de passe valide");
+//         input.focus();
+//         return false;
+//     } else {
+//         token_page.style.display = "block";
+//         admin_page.style.display = "none";
+//     }
+// }
+
+
 
 // Récupérer le bouton dans mon html avec le ElementById car le ElementsByClassName n'a pas le addEventListener)
 let btn_start = document.getElementById("btn_start");
 btn_start.addEventListener("click", startQuestions);
+
+// let btn_admin = document.getElementById("btn_admin");
+// btn_admin.addEventListener("click", Login);
